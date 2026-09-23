@@ -125,10 +125,7 @@ The Arc agent reported the machine as **Connected** and exposed the local VM as 
 - Azure resource management
 - Troubleshooting agent connectivity
 
-### Screenshot placeholder
-
-> **[SCREENSHOT 02 — AZURE ARC CONNECTED]**  
-> Show the `azcmagent show` result or Azure portal resource showing `UbuntuLogForwarderVM` as connected.
+![screenshots](/screenshots/02-azure-arc-connected.png)
 
 ---
 
