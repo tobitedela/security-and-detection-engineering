@@ -203,7 +203,6 @@ Packet capture showed traffic similar to:
 
 **Metasploitable → Ubuntu Syslog was successfully verified.**
 
-### Screenshot placeholders
 
 > [**UDP 514 LISTENING]**  
 > ![screenshots](/screenshots/06-ubuntu-udp514.png)
@@ -249,8 +248,6 @@ The Nmap scan did **not** produce an obvious corresponding event in the current 
 **Detection depends on telemetry.**
 
 For network reconnaissance, useful data sources could include network sensors, firewalls, IDS/IPS, flow logs, endpoint telemetry or a host-based network monitoring source. Plain Linux Syslog alone is not enough to reliably identify an Nmap scan.
-
-### Screenshot placeholders
 
 > **[NMAP RESULTS ON ATTACKER VM]**  
 > ![screenshots](/screenshots/09-nmap-results.png)
@@ -333,7 +330,6 @@ The rule generated a **real Sentinel incident** containing the alert/event and t
 - Sentinel Analytics Rules
 - Incident creation and triage
 
-### Screenshot placeholders
 
 > **[FAILED SSH LOGS & KQL DETECTION RESULT]**  
 > ![screenshots](/screenshots/11-ssh-failed-logins.png)
@@ -343,112 +339,9 @@ The rule generated a **real Sentinel incident** containing the alert/event and t
 
 ---
 
-## Attack 3 — Web application / SQL injection simulation
-
-### Objective
-
-Simulate an SQL injection attempt against the deliberately vulnerable Mutillidae application and build the telemetry required to hunt it.
-
-### Reconnaissance
-
-From Kali, the Apache web server and the vulnerable Mutillidae application were identified.
-
-The login endpoint was discovered and tested with a controlled SQL injection payload in a lab environment.
-
-### Action
-
-A controlled POST request was sent to the Mutillidae login page using an SQL injection payload.
-
-The important point was not simply whether the application returned a result. The SOC goal was to determine:
-
-**Did the attack produce evidence that Sentinel could see?**
-
-### Initial result
-
-The SQL injection request reached Apache successfully.
-
-Apache recorded the request in:
-
-```text
-/var/log/apache2/access.log
-```
-
-Example evidence included a POST to:
-
-```text
-/mutillidae/index.php?page=login.php
-```
-
-However, the existing Sentinel Syslog pipeline did not contain Apache access-log records.
-
-### Telemetry engineering response
-
-Because Metasploitable 2 is an old and intentionally vulnerable operating system, I avoided putting an Internet-facing Azure agent directly on it.
-
-Instead, I kept the existing architecture and built a local bridge:
-
-```text
-Apache access.log
-       ↓
-tail -F
-       ↓
-logger -t apache_access
-       ↓
-Metasploitable syslogd
-       ↓ UDP 514
-Ubuntu
-       ↓
-AMA / DCR / Log Analytics / Sentinel
-```
-
-The bridge was tested locally and successfully produced:
-
-```text
-apache_access: 192.168.56.101 ... "GET / HTTP/1.1" 200 ...
-```
-
-### Current status
-
-The **Apache → local syslog bridge was verified on Metasploitable**.
-
-The final **Ubuntu → Sentinel verification for the newly bridged Apache events was still pending** at the time this portfolio package was prepared.
-
-That distinction is intentional: I would rather document an open telemetry-validation step than claim a detection that was never proven end-to-end.
-
-### SOC lesson
-
-This attack demonstrated a core detection-engineering principle:
-
-> **The presence of an attack does not guarantee the presence of telemetry.**
-
-The first SQL injection test showed that an attack can reach the web server while remaining invisible to the SIEM because the relevant application/web logs were not being collected.
-
-### Next improvement
-
-Once Apache events are confirmed in Sentinel, the next step is to build a web-attack detection based on the actual fields available in the collected Apache telemetry.
-
-A stronger production design could use a web application firewall, ModSecurity/application logs, endpoint telemetry or a supported custom-log ingestion pattern where appropriate.
-
-### Screenshot placeholders
-
-> **[SCREENSHOT 15 — MUTILLIDAE / WEB TARGET]**  
-> Show the vulnerable application page used for the lab.
-
-> **[SCREENSHOT 16 — APACHE ACCESS LOG]**  
-> Show the SQLi request appearing in `/var/log/apache2/access.log`.
-
-> **[SCREENSHOT 17 — APACHE → SYSLOG BRIDGE]**  
-> Show `apache_access` events in `/var/log/syslog`.
-
-> **[SCREENSHOT 18 — SENTINEL APACHE EVENT]**  
-> Insert once the event is verified in Sentinel.
-
-> **[SCREENSHOT 19 — WEB ATTACK KQL]**  
-> Insert once the final detection rule is built and tested.
-
 ---
 
-# 8. Detection engineering approach
+# 7. Detection engineering approach
 
 The detection workflow used in this project was:
 
@@ -478,7 +371,7 @@ This helped avoid a common beginner mistake: **writing detection logic before ve
 
 ---
 
-# 9. Troubleshooting lessons
+# 8. Troubleshooting lessons
 
 ## Azure Arc
 
@@ -528,7 +421,7 @@ The SOC objective was to generate trustworthy authentication telemetry — not t
 
 ---
 
-# 10. Security boundaries and design decisions
+# 9. Security boundaries and design decisions
 
 ### Why Metasploitable was not given Internet access
 
@@ -551,7 +444,7 @@ rather than connecting the vulnerable target directly to Azure-facing infrastruc
 
 ---
 
-# 11. Skills demonstrated
+# 10. Skills demonstrated
 
 ## Security Operations
 
@@ -591,8 +484,6 @@ rather than connecting the vulnerable target directly to Azure-facing infrastruc
 - Nmap reconnaissance
 - HTTP enumeration
 - SSH authentication attacks
-- SQL injection simulation
-- Vulnerable application testing
 
 ## Analytical thinking
 
@@ -606,7 +497,7 @@ rather than connecting the vulnerable target directly to Azure-facing infrastruc
 
 
 
-# 12. Future improvements
+# 11. Future improvements
 
 This project can be extended into a larger detection-engineering portfolio.
 
@@ -675,14 +566,13 @@ soc-sentinel-lab/
 │   └── commands-used.md
 │
 └── screenshots/
-    └── README.md
 ```
 
 ---
 
 # 14. Important portfolio note
 
-This repository represents a **hands-on home cybersecurity lab**, not a production enterprise SOC.
+This repository represents a **hands-on home cybersecurity project**, not a production enterprise SOC.
 
 The value of the project is the demonstrated engineering process:
 
