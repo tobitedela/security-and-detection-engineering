@@ -72,7 +72,7 @@ Metasploitable 2 was intentionally kept on the **Host-only network**. It was not
 
 This design reduces unnecessary exposure of the deliberately vulnerable VM while still allowing the lab to demonstrate a realistic logging architecture.
 
-![screenshots](/screenshots/01-lab-architecture.png)
+> ![screenshots](/screenshots/01-lab-architecture.png)
 
 ---
 
@@ -125,7 +125,7 @@ The Arc agent reported the machine as **Connected** and exposed the local VM as 
 - Azure resource management
 - Troubleshooting agent connectivity
 
-![screenshots](/screenshots/02-azure-arc-connected.png)
+> ![screenshots](/screenshots/02-azure-arc-connected.png)
 
 ---
 
