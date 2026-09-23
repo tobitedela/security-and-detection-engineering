@@ -72,10 +72,7 @@ Metasploitable 2 was intentionally kept on the **Host-only network**. It was not
 
 This design reduces unnecessary exposure of the deliberately vulnerable VM while still allowing the lab to demonstrate a realistic logging architecture.
 
-### Screenshot placeholder
-
-> **[SCREENSHOT 01 — LAB ARCHITECTURE]**  
-> Insert a screenshot/diagram showing Kali, Metasploitable, Ubuntu, Azure Arc, AMA, DCR, Log Analytics and Sentinel.
+![screenshots](/screenshots/01-lab-architecture.png)
 
 ---
 
@@ -128,10 +125,7 @@ The Arc agent reported the machine as **Connected** and exposed the local VM as 
 - Azure resource management
 - Troubleshooting agent connectivity
 
-### Screenshot placeholder
-
-> **[SCREENSHOT 02 — AZURE ARC CONNECTED]**  
-> Show the `azcmagent show` result or Azure portal resource showing `UbuntuLogForwarderVM` as connected.
+![screenshots](/screenshots/02-azure-arc-connected.png)
 
 ---
 
