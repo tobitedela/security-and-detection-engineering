@@ -72,10 +72,7 @@ Metasploitable 2 was intentionally kept on the **Host-only network**. It was not
 
 This design reduces unnecessary exposure of the deliberately vulnerable VM while still allowing the lab to demonstrate a realistic logging architecture.
 
-### Screenshot placeholder
-
-> **[SCREENSHOT 01 — LAB ARCHITECTURE]**  
-> Insert a screenshot/diagram showing Kali, Metasploitable, Ubuntu, Azure Arc, AMA, DCR, Log Analytics and Sentinel.
+![screenshots](/screenshots/01-lab-architecture.png)
 
 ---
 
