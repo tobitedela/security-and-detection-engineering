@@ -1,6 +1,6 @@
-# Building a Home SOC with Microsoft Sentinel, Azure Arc, Azure Monitor Agent, Linux and Kali
+# End-to-End Security Engineering & Threat Detection Project
 
-> A hands-on cybersecurity lab focused on **attack simulation, telemetry engineering, detection, investigation and incident response**.
+> A hands-on cybersecurity project focused on **attack simulation, telemetry engineering, detection, investigation and incident response**.
 
 ## Project summary
 
@@ -617,45 +617,11 @@ rather than connecting the vulnerable target directly to Azure-facing infrastruc
 
 ---
 
-# 12. What this project demonstrates to a hiring manager
 
-This project is intended to demonstrate more than tool familiarity.
 
-### I can build
+# 12. Future improvements
 
-A functioning collection pipeline from Linux systems into Microsoft Sentinel.
-
-### I can investigate
-
-I can trace an event across the stack instead of looking only at the final SIEM alert.
-
-### I can detect
-
-I can translate raw authentication events into a KQL detection and Sentinel Analytics Rule.
-
-### I can think like a SOC analyst
-
-I distinguish between:
-
-- an attack occurring
-- a host generating logs
-- a collector receiving logs
-- a SIEM ingesting logs
-- a query finding the event
-- a rule generating an alert
-- an analyst investigating the incident
-
-### I can troubleshoot
-
-When a detection failed, I traced the telemetry path and found that the missing evidence was caused by **missing log collection**, not necessarily by a bad attack simulation.
-
-That is a core operational SOC skill.
-
----
-
-# 13. Future improvements
-
-This lab can be extended into a larger detection-engineering portfolio.
+This project can be extended into a larger detection-engineering portfolio.
 
 ### Planned attack scenarios
 
@@ -700,35 +666,7 @@ Attack
 
 ---
 
-# 14. Portfolio evidence checklist
-
-Use the following screenshots to turn the project into an evidence-driven GitHub portfolio:
-
-| # | Evidence |
-|---|---|
-| 01 | Lab architecture |
-| 02 | Azure Arc connected |
-| 03 | AMA enabled |
-| 04 | DCR configuration |
-| 05 | DCR deployment |
-| 06 | Ubuntu UDP 514 listening |
-| 07 | Metasploitable → Ubuntu packet capture |
-| 08 | Syslog events in Log Analytics |
-| 09 | Nmap reconnaissance |
-| 10 | Sentinel telemetry gap for Nmap |
-| 11 | Failed SSH authentication events |
-| 12 | SSH brute-force KQL result |
-| 13 | Sentinel Analytics Rule |
-| 14 | Generated Sentinel incident |
-| 15 | Mutillidae web target |
-| 16 | Apache access log evidence |
-| 17 | Apache-to-Syslog evidence |
-| 18 | Apache event in Sentinel |
-| 19 | Web attack KQL/detection |
-
----
-
-# 15. Repository structure
+# 13. Repository structure
 
 ```text
 soc-sentinel-lab/
@@ -755,7 +693,7 @@ soc-sentinel-lab/
 
 ---
 
-# 16. Important portfolio note
+# 14. Important portfolio note
 
 This repository represents a **hands-on home cybersecurity lab**, not a production enterprise SOC.
 
