@@ -168,7 +168,7 @@ These checks were used to verify the extension state, AMA service state and loca
 > ![screenshots](/screenshots/03-ama-enabled.png)
 
 > **[Data Collection Rule- DCR CONFIGURATION]**  
-> ![screenshots](/screenshots/04-dcr-arc-configuration.png)
+> ![screenshots](/screenshots/04-dcr-configuration.png)
 
 > **[DCR DEPLOYMENT SUCCESS]**  
 > ![screenshots](/screenshots/05-dcr-deployment.png)
