@@ -1,0 +1,11 @@
+// Detect repeated failed SSH password authentication attempts.
+// Lab threshold: 5 or more failures from one source IP in a 5-minute window.
+
+Syslog
+| where Computer == "192.168.56.102"
+| where ProcessName == "sshd"
+| where SyslogMessage contains "Failed password"
+| extend SourceIP = extract(@"from ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)", 1, SyslogMessage)
+| summarize FailedAttempts = count() by SourceIP, bin(TimeGenerated, 5m)
+| where FailedAttempts >= 5
+| order by FailedAttempts desc

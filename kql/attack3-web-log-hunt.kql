@@ -1,0 +1,15 @@
+// Hunt for Apache access-log events once the Apache -> Syslog bridge
+// has been verified end-to-end in Sentinel.
+//
+// Expected pattern:
+// apache_access: <client-ip> ... "METHOD URI HTTP/1.1" <status> ...
+
+Syslog
+| where Computer == "192.168.56.102"
+| where SyslogMessage contains "apache_access"
+| where TimeGenerated > ago(30m)
+| extend ClientIP = extract(@"apache_access:\s+([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)", 1, SyslogMessage)
+| extend Request = extract(@"\"(GET|POST|PUT|DELETE|HEAD|OPTIONS|PATCH)\s+([^\s]+)\s+HTTP/[0-9.]+\"", 1, SyslogMessage)
+| extend URI = extract(@"\"(?:GET|POST|PUT|DELETE|HEAD|OPTIONS|PATCH)\s+([^\s]+)\s+HTTP/[0-9.]+\"", 1, SyslogMessage)
+| project TimeGenerated, ClientIP, Request, URI, SyslogMessage
+| order by TimeGenerated desc

@@ -1,0 +1,21 @@
+# Secrets / local environment
+.env
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Packet captures / large temporary artifacts
+*.pcap
+*.pcapng
+*.iso
+*.ova
+
+# Local lab exports that may contain tenant/subscription identifiers
+local-config/

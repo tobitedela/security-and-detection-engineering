@@ -1,0 +1,6 @@
+// Verify that Syslog telemetry from Metasploitable is reaching Log Analytics.
+
+Syslog
+| where Computer == "192.168.56.102"
+| where TimeGenerated > ago(20m)
+| order by TimeGenerated desc
