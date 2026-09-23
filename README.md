@@ -163,16 +163,15 @@ sudo ss -lnp | grep -E "28330|514"
 
 These checks were used to verify the extension state, AMA service state and local log-ingestion ports.
 
-### Screenshot placeholders
 
-> **[SCREENSHOT 03 — AMA ENABLED]**  
-> Show the AMA extension as `ENABLED` on Ubuntu.
+> **[AMA ENABLED ON LOG FORWARDER]**  
+> ![screenshots](/screenshots/03-ama-enabled.png)
 
-> **[SCREENSHOT 04 — DCR CONFIGURATION]**  
-> Show `DCR-Syslog-SocLab`, Linux Syslog data source, selected facilities/severity and the `SecurityOperations` destination.
+> **[Data Collection Rule- DCR CONFIGURATION]**  
+> ![screenshots](/screenshots/04-dcr-arc-configuration.png)
 
-> **[SCREENSHOT 05 — DCR DEPLOYMENT SUCCESS]**  
-> Show the successful DCR deployment/association.
+> **[DCR DEPLOYMENT SUCCESS]**  
+> ![screenshots](/screenshots/05-dcr-deployment.png)
 
 ---
 
