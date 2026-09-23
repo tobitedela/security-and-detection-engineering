@@ -205,14 +205,14 @@ Packet capture showed traffic similar to:
 
 ### Screenshot placeholders
 
-> **[SCREENSHOT 06 — UDP 514 LISTENING]**  
-> Show Ubuntu listening on UDP 514.
+> [**UDP 514 LISTENING]**  
+> ![screenshots](/screenshots/06-ubuntu-udp514.png)
 
-> **[SCREENSHOT 07 — TCPDUMP PROOF]**  
-> Show the Metasploitable-to-Ubuntu Syslog packets.
+> **[TCPDUMP PROOF]**  
+> ![screenshots](/screenshots/07-tcpdump-syslog.png)
 
-> **[SCREENSHOT 08 — LOG ANALYTICS SYSLOG EVENTS]**  
-> Show Metasploitable events appearing in the `Syslog` table.
+> **[LOG ANALYTICS SYSLOG EVENTS IN MICROSOFT SENTINEL]**  
+> ![screenshots](/screenshots/08-log-analytics-syslog.png)
 
 ---
 
@@ -252,11 +252,11 @@ For network reconnaissance, useful data sources could include network sensors, f
 
 ### Screenshot placeholders
 
-> **[SCREENSHOT 09 — NMAP RESULTS]**  
-> Show the Nmap result and exposed services.
+> **[NMAP RESULTS ON ATTACKER VM]**  
+> ![screenshots](/screenshots/09-nmap-results.png)
 
-> **[SCREENSHOT 10 — SENTINEL HUNT / NO NETWORK-SCAN TELEMETRY]**  
-> Show the Sentinel query/result demonstrating that the current Syslog source did not expose useful Nmap evidence.
+> **[SENTINEL HUNT / NO NETWORK-SCAN TELEMETRY]**  
+> ![screenshots](/screenshots/10-sentinel-network-telemetry-gap.png)
 
 ---
 
@@ -291,7 +291,7 @@ Syslog
 | order by FailedAttempts desc
 ```
 
-### Logic in plain English
+### Explanation
 
 1. Look only at Metasploitable.
 2. Look only at SSH daemon events.
@@ -335,17 +335,11 @@ The rule generated a **real Sentinel incident** containing the alert/event and t
 
 ### Screenshot placeholders
 
-> **[SCREENSHOT 11 — FAILED SSH LOGS]**  
-> Show the failed authentication events in Sentinel/Log Analytics.
+> **[FAILED SSH LOGS & KQL DETECTION RESULT]**  
+> ![screenshots](/screenshots/11-ssh-failed-logins.png)
 
-> **[SCREENSHOT 12 — KQL DETECTION RESULT]**  
-> Show the query returning `192.168.56.101` with five failed attempts.
-
-> **[SCREENSHOT 13 — SENTINEL ANALYTICS RULE]**  
-> Show the rule configuration.
-
-> **[SCREENSHOT 14 — SENTINEL INCIDENT]**  
-> Show `SSH Brute Force - Multiple Failed Logins` as a Sentinel incident.
+> **[SENTINEL ANALYTICS RULE & INCIDENT]**  
+> ![screenshots](/screenshots/14-sentinel-incident.png)
 
 ---
 
